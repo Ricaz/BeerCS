@@ -11,9 +11,9 @@ const exec	= require('child_process').exec
 const fs	= require('fs')
 
 // Load custom modules
-const http	= require('./http-server')
-const log	= require('./utility').log
-const scoretracker = require('./scoretracker')
+const http	= require('./lib/http-server')
+const log	= require('./lib/utility').log
+const scoretracker = require('./lib/scoretracker')
 
 // Global vars
 var clientsWs	= []
@@ -143,9 +143,9 @@ function getMedia(event) {
 		let random = media[Math.floor(Math.random() * media.length)]
 
 		if (path.includes('default'))
-			return `media/default/${event}/${random}`
+			return `assets/media/default/${event}/${random}`
 		else
-			return `media/${settings.theme}/${event}/${random}`
+			return `assets/media/${settings.theme}/${event}/${random}`
 	} catch (e) {
 		log.tcp(`No media found for event '${event}'.\nError: ${e}`)
 		return false
